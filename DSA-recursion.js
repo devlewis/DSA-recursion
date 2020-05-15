@@ -7,27 +7,116 @@
 // 2: Another sheep jumps over the fence
 // 1: Another sheep jumps over the fence
 // All sheep jumped over the fence
+
+const sheepCounter = function (num) {
+  if (num < 1) {
+    return "All sheep jumped over the fence";
+  }
+
+  print(`${num}: Another sheep jumps over the fence`);
+
+  return sheepCounter(num - 1);
+};
+
 // 2. Power Calculator
-// Write a function called powerCalculator() that takes two parameters, an integer as a base, and another integer as an exponent. The function returns the value of the base raised to the power of the exponent. Use only exponents greater than or equal to 0 (positive numbers)
+// Write a function called powerCalculator() that takes two parameters,
+// an integer as a base, and another integer as an exponent. The function
+// returns the value of the base raised to the power of the exponent. Use only 
+//exponents greater than or equal to 0 (positive numbers)
 
 // powerCalculator(10,2) should return 100
 // powerCalculator(10,-2) should return exponent should be >= 0
+
+const powerCalculator = function (base, exp) {
+  if (exp > 0) {
+    return "exponent should be >= 0";
+  }
+  
+  exp = exp - 1
+
+  return powerCalculator(base ^ exp);
+};
+
 // 3. Reverse String
-// Write a function that reverses a string. Take a string as input, reverse the string, and return the new string.
+// Write a function that reverses a string. Take a string as input,
+//reverse the string, and return the new string.
+
+
+stringReverse("str")
+
+      =>  return stringReverse(  "tr"   ) + "s"
+
+            => return ( "r" ) + "t"
+
+                
+
+const stringReverse = function (str) {
+  if (str.length === 1) {
+    return str;
+  }
+
+  return stringReverse(str.slice(1)) + str[0]
+};
 
 // 4. nth Triangular Number
-// Calculate the nth triangular number. A triangular number counts the objects that can form an equilateral triangle. The nth triangular number is the number of dots composing a triangle with n dots on a side, and is equal to the sum of the n natural numbers from 1 to n. This is the Triangular Number Sequence: 1, 3, 6, 10, 15, 21, 28, 36, 45.
+// Calculate the nth triangular number. A triangular number
+//counts the objects that can form an equilateral triangle.
+//The nth triangular number is the number of dots composing
+//a triangle with n dots on a side, and is equal to the sum of the n
+//natural numbers from 1 to n.
 
-//                           *
-//             *           *    *
-// *     |   *   *  |   *    *    *  |
+//This is the Triangular Number Sequence: 1, 3, 6, 10, 15, 21, *  28, 36, 45.
+//                        *                 * *
+//                           *            *    *            *  *  *
+//             *           *    *       *    *   *        *   *  *  *
+// *     |   *   *  |   *    *    *  | *   *   *   *  |  *  *  *  *  *
 
 //  1st       2nd           3rd             nth?
+
+
+
+
+const triangularNum = function (n) {
+  if (n === 0) {
+    return "n cannot be zero";
+  }
+
+  return triangularNum(n(n + 1) / 2);
+};
+
 // 5. String Splitter
-// Write a recursive function that splits a string based on a separator (similar to String.prototype.split). Don't use JS array's split function to solve this problem.
+// Write a recursive function that splits a string based on a separator
+//(similar to String.prototype.split). Don't use JS array's split function
+//to solve this problem.
 
 // Input: 02/20/2020
 // Output: ["02", "20", "2020"]
+
+splitter("02/20/2020")
+
+    => return splitter("20/2020") .unshift("02")
+
+        => return splitter("2020") .unshift("20")
+
+
+
+const splitter = function(str){
+  const result = [];
+
+  for(i=0; i<str.length; i++){
+    if(str[i] === str.length){
+      return str;
+    }
+    if(str[i] === "/"){
+    str = str.slice(0,i-1)}
+
+    else return str
+  }
+
+  return result.unshift(splitter(str)) 
+}
+
+
 // 6. Fibonacci
 // Write a recursive function that prints the Fibonacci sequence of a given number. The Fibonacci sequence is a series of numbers in which each number is the sum of the 2 preceding numbers. For example, the 7th Fibonacci number in a Fibonacci sequence is 13. The sequence looks as follows: 1, 1, 2, 3, 5, 8, 13.
 
@@ -108,5 +197,9 @@
 //             Eric
 //             Ana
 //             Wes
+
 // 12. Binary Representation
-// Write a recursive function that prints out the binary representation of a given number. For example, the program should take 3 as an input and print 11 as output, or 25 as an input and print 11001 as an output. Note that the binary representation of 0 should be 0.
+// Write a recursive function that prints out the binary representation of a given number.
+// For example, the program should take 3 as an input and print 11 as
+// output, or 25 as an input and print 11001 as an output.
+// Note that the binary representation of 0 should be 0.
